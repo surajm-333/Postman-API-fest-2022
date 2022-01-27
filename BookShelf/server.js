@@ -4,13 +4,29 @@ const mongoose = require('mongoose')
 const app = express();
 const config = require('./config/config').get(process.env.NODE_ENV);
 mongoose.Promise = global.Promise;
-const {Book} =require('./bookschema')    //Fetch Book Schema
-mongoose.connect(config.DATABASE) 
+const {Book} =require('./models/bookschema')    //Fetch Book Schema
+const {getUserById, isAdmin} = require("./controllers/auth")
+mongoose.connect(config.DATABASE).then(() => {
+    console.log("MONGODB CONNECTED")
+}).catch(err => "DATABASE CONNECTION FAILED")
 app.use(express.json());      // MiddleWares
 app.use(cookieParser());      // MiddleWares
 
+const authRoutes = require("./routes/authRoutes");
+const { signedIn, isAuthenticated } = require('./controllers/auth');
+
+
+app.use("/api", authRoutes);
+
+app.param("userId", getUserById)
+
+
 // --- GET ---
-app.get('/api/getbook',(req,res)=>{
+
+app.get("/", (req, res) => {
+    res.send("Hello World")
+})
+app.get('/api/getbook',signedIn,(req,res)=>{
     let id = req.query.id;
     Book.findById(id,(err,doc)=>{
         if(err) return res.status(400).send(err)
@@ -18,7 +34,7 @@ app.get('/api/getbook',(req,res)=>{
 
     })
 })
-app.get('/api/books',(req,res)=>{
+app.get('/api/books', signedIn ,(req,res)=>{
     Book.find({},(err,docs)=>
     { 
         console.log(err)
@@ -26,21 +42,21 @@ app.get('/api/books',(req,res)=>{
         res.send(docs)
     })
 })
-app.get('/api/bookbyname',(req,res)=>{
+app.get('/api/bookbyname',signedIn,(req,res)=>{
     let bookname = req.query.name;
     Book.find({name:bookname},(err,bookdet)=>{
         if(err) return res.status(400).send(err)
         res.json(bookdet)
     })
 })
-app.get('/api/bookbyauthor',(req,res)=>{
+app.get('/api/bookbyauthor',signedIn,(req,res)=>{
    let bookauthor = req.query.author;
    Book.find({author:bookauthor},(err,bookdet)=>{
        if(err) return res.status(400).send(err)
        res.json(bookdet)
    })
 })
-app.get('/api/bookbygenre',(req,res)=>{
+app.get('/api/bookbygenre',signedIn,(req,res)=>{
     let bookgenre = req.query.genre;
     Book.find({genre:bookgenre},(err,bookdet)=>{
         if(err) return res.status(400).send(err)
@@ -48,7 +64,7 @@ app.get('/api/bookbygenre',(req,res)=>{
     })
 })
 // --- POST---
-app.post('/api/admin/book',(req,res)=>{
+app.post('/api/admin/book/:userId',signedIn, isAuthenticated, isAdmin,(req,res)=>{
     const bookdet = new  Book(req.body);
     bookdet.save((err,doc)=>{
         if(err) return res.status(400).send(err)
@@ -58,7 +74,7 @@ app.post('/api/admin/book',(req,res)=>{
     })
 })
 // ---UPDATE---
-app.post('/api/admin/update',(req,res)=>{
+app.post('/api/admin/update',signedIn, isAuthenticated, isAdmin,(req,res)=>{
     const id = req.body._id;
     Book.findByIdAndUpdate(id,req.body,{new:true},(err,doc)=>{
         if(err) return res.status(400).send(err)
@@ -68,7 +84,7 @@ app.post('/api/admin/update',(req,res)=>{
     })
 })
 // ---DELETE---
-app.delete('/api/admin/delete',(req,res)=>{
+app.delete('/api/admin/delete',signedIn, isAuthenticated, isAdmin,(req,res)=>{
   const id = req.query.id;
   Book.findByIdAndRemove(id,(err,doc)=>{
       if(err) return res.status(400).send(err)

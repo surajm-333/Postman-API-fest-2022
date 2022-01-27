@@ -64,7 +64,7 @@ paths:
                       application/json:
                           schema:
                               $ref: "#/components/schemas/BookPostResponse"
-  /admin/book/{id}:
+  /admin/book/{id}/{userId}:
         put:
             summary: 'update book path for admin'
             operationId: updateBook
@@ -72,6 +72,12 @@ paths:
               - name: id
                 in: path
                 description: The unique id
+                required: true
+                schema:
+                    type: string
+                - name: userId
+                in: path
+                description: The unique id of the loggedin user
                 required: true
                 schema:
                     type: string
@@ -94,6 +100,12 @@ paths:
               - name: id
                 in: path
                 description: The unique id
+                required: true
+                schema:
+                    type: string
+              - name: userId
+                in: path
+                description: The unique id of the loggedin user
                 required: true
                 schema:
                     type: string
@@ -143,6 +155,12 @@ paths:
               - name: id
                 in: path
                 description: The unique id
+                required: true
+                schema:
+                    type: string
+              - name: userId
+                in: path
+                description: The unique id of the loggedin user
                 required: true
                 schema:
                     type: string
