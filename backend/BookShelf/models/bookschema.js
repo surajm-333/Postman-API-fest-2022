@@ -12,10 +12,10 @@ const bookSchema = mongoose.Schema({
         required:true
 
     },
-    genreid:{
-       type:Number,
-       required:true
-    },
+    // genreid:{
+    //    type:Number,
+    //    required:true
+    // },
     author:{
          type:String,
          required:true

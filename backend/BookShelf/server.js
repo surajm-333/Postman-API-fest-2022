@@ -60,7 +60,7 @@ app.post('/api/admin/book/:userId',signedIn, isAuthenticated, isAdmin,(req,res)=
     })
 })
 // ---UPDATE---
-app.post('/api/admin/update',signedIn, isAuthenticated, isAdmin,(req,res)=>{
+app.post('/api/admin/update/:userId',signedIn, isAuthenticated, isAdmin,(req,res)=>{
     const id = req.body._id;
     Book.findByIdAndUpdate(id,req.body,{new:true},(err,doc)=>{
         if(err) return res.status(400).send(err)
@@ -70,7 +70,7 @@ app.post('/api/admin/update',signedIn, isAuthenticated, isAdmin,(req,res)=>{
     })
 })
 // ---DELETE---
-app.delete('/api/admin/delete',signedIn, isAuthenticated, isAdmin,(req,res)=>{
+app.delete('/api/admin/delete/:userId',signedIn, isAuthenticated, isAdmin,(req,res)=>{
   const id = req.query.id;
   Book.findByIdAndRemove(id,(err,doc)=>{
       if(err) return res.status(400).send(err)

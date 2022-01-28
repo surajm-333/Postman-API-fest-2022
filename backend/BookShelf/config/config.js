@@ -5,7 +5,7 @@ const config ={
     },
     default:{
         SECRET:'SUPERSECRET123',
-        DATABASE:'mongodb://localhost:27017/books'
+        DATABASE:'mongodb+srv://imageshop_admin:imageshop_admin@imageshopdb.5ngx7.mongodb.net/books?retryWrites=true&w=majority'
 
     }
 }
