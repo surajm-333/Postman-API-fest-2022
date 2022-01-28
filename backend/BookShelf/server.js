@@ -42,25 +42,11 @@ app.get('/api/books', signedIn ,(req,res)=>{
         res.send(docs)
     })
 })
-app.get('/api/bookbyname',signedIn,(req,res)=>{
-    let bookname = req.query.name;
-    Book.find({name:bookname},(err,bookdet)=>{
+app.get('/api/bookbysearch',signedIn,(req,res)=>{
+    let search = req.query.search;
+    Book.find({$or:[{name:{$regex:search}},{author:{$regex:search}},{genre:{$regex:search}}]},(err,bookdet)=>{
         if(err) return res.status(400).send(err)
         res.json(bookdet)
-    })
-})
-app.get('/api/bookbyauthor',signedIn,(req,res)=>{
-   let bookauthor = req.query.author;
-   Book.find({author:bookauthor},(err,bookdet)=>{
-       if(err) return res.status(400).send(err)
-       res.json(bookdet)
-   })
-})
-app.get('/api/bookbygenre',signedIn,(req,res)=>{
-    let bookgenre = req.query.genre;
-    Book.find({genre:bookgenre},(err,bookdet)=>{
-        if(err) return res.status(400).send(err)
-        res.send(bookdet)
     })
 })
 // --- POST---
