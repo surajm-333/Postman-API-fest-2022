@@ -4,7 +4,7 @@ const config ={
          DATABASE:process.env.MONGODB_URI
     },
     default:{
-        SECRET:'SUPERSECRET123',
+        SECRET:'AGrI4FTpyaamLKBAnS3ov8SnnNd2ABCr',
         DATABASE:'mongodb+srv://imageshop_admin:imageshop_admin@imageshopdb.5ngx7.mongodb.net/books?retryWrites=true&w=majority'
 
     }
