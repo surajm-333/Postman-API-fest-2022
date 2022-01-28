@@ -77,7 +77,10 @@ app.delete('/api/admin/delete/:userId',signedIn, isAuthenticated, isAdmin,(req,r
       res.json({success:true})
   })
 })
-app.listen(3000,(err)=>{
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT,(err)=>{
     if(err) console.log("Error")
     else console.log("Running on Port 3000")
 })
