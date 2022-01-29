@@ -1,4 +1,4 @@
-import './UploadFormStyle.css'
+import '../../styles/UploadFormStyle.css'
 
 function UploadBook() {
     return (

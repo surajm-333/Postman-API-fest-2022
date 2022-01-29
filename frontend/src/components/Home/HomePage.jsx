@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import apiUrl from '../../apiURL';
 import BookImgCard from './BookImgCard';
 import './HomePageStyle.css';
 function HomePage() {

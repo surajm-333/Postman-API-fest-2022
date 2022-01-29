@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import apiUrl from '../src/apiURL';
 
 
 import './App.css';
@@ -21,10 +22,11 @@ function App() {
       {/* <UploadBook/> */}
       <Router>
         <Routes>
-          <Route exact path="/" element={<LandingPage />} />
-          <Route exact path="/home" element={<HomePage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/" element={<LandingPage />} />
+          <Route exact path="/home" element={<HomePage />} />
+          <Route exact path="/upload" element={<UploadBook />} />
         </Routes>
       </Router>
     </>

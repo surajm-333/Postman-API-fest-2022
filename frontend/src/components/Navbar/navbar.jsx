@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import BookLogo from './BookLogo.jpg';
 import BookLogo1 from './BookLogo1.png';
+import apiUrl from '../../apiURL';
 import './NavBarStyle.css';
 function NavBar() {
     return (
