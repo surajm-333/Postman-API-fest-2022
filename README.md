@@ -15,7 +15,10 @@ Presentation: [here](https://drive.google.com/file/d/1LGn8qGB9_W4khaAYSt5SF5UV73
 5./api/admin/delete -- Delete the book from database [DELETE] <br />
 5./login -- For Login the user [POST] <br />
 6. /signup -- For User Sign Up [POST] 
- 
+
+About Folder -- 
+BookShelf/server.js and Bookshelf/controller/auth.js contains all APIs
+BookShelf/models contains all the Database Schemas (User and Books)
  # Our Team --
 1.Suraj Mulchandani (Team Lead) <br />
 2.Manish Kumar <br />
