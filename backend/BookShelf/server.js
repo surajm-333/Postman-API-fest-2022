@@ -34,7 +34,7 @@ app.get('/api/getbook',signedIn,(req,res)=>{
 
     })
 })
-app.get('/api/books', signedIn ,(req,res)=>{
+app.get('/api/books', signedIn ,(req,res)=>{                        // Fetch all books from Database
     Book.find({},(err,docs)=>
     { 
         console.log(err)
@@ -42,7 +42,7 @@ app.get('/api/books', signedIn ,(req,res)=>{
         res.send(docs)
     })
 })
-app.get('/api/bookbysearch',signedIn,(req,res)=>{
+app.get('/api/bookbysearch',signedIn,(req,res)=>{                   //Fetch books by a keyword for name of book,Author or Genre
     let search = req.query.search;
     Book.find({$or:[{name:{$regex:search}},{author:{$regex:search}},{genre:{$regex:search}}]},(err,bookdet)=>{
         if(err) return res.status(400).send(err)
@@ -50,7 +50,7 @@ app.get('/api/bookbysearch',signedIn,(req,res)=>{
     })
 })
 // --- POST---
-app.post('/api/admin/book/:userId',signedIn, isAuthenticated, isAdmin,(req,res)=>{
+app.post('/api/admin/book/:userId',signedIn, isAuthenticated, isAdmin,(req,res)=>{             //Post a new Book in database
     const bookdet = new  Book(req.body);
     bookdet.save((err,doc)=>{
         if(err) return res.status(400).send(err)
@@ -60,7 +60,7 @@ app.post('/api/admin/book/:userId',signedIn, isAuthenticated, isAdmin,(req,res)=
     })
 })
 // ---UPDATE---
-app.post('/api/admin/update/:userId',signedIn, isAuthenticated, isAdmin,(req,res)=>{
+app.post('/api/admin/update/:userId',signedIn, isAuthenticated, isAdmin,(req,res)=>{         //Update an existing Book in DataBase
     const id = req.body._id;
     Book.findByIdAndUpdate(id,req.body,{new:true},(err,doc)=>{
         if(err) return res.status(400).send(err)
@@ -70,7 +70,7 @@ app.post('/api/admin/update/:userId',signedIn, isAuthenticated, isAdmin,(req,res
     })
 })
 // ---DELETE---
-app.delete('/api/admin/delete/:userId',signedIn, isAuthenticated, isAdmin,(req,res)=>{
+app.delete('/api/admin/delete/:userId',signedIn, isAuthenticated, isAdmin,(req,res)=>{      //Delete an existing Book in Database
   const id = req.query.id;
   Book.findByIdAndRemove(id,(err,doc)=>{
       if(err) return res.status(400).send(err)
