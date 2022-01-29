@@ -21,9 +21,9 @@ BookShelf/server.js and Bookshelf/controller/auth.js contains all APIs
 BookShelf/models contains all the Database Schemas (User and Books)
 # Demo --
 Signup:
-(https://github.com/surajm-333/Postman-API-fest-2022/raw/main/backend/postman-demo-1.png)
+(/backend/postman-demo-1.png)
 Login:
-(https://github.com/surajm-333/Postman-API-fest-2022/raw/main/backend/postman-demo-2.png)
+(/backend/postman-demo-2.png)
 
 # Our Team --
 1. Suraj Mulchandani (Team Lead) <br />
