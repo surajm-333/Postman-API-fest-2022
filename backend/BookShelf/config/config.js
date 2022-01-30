@@ -5,7 +5,7 @@ const config ={
     },
     default:{
         SECRET:'SUPERSECRET123',
-        DATABASE:'mongodb://localhost:27017/books'
+        DATABASE:'mongo_url_goes_here'
 
     }
 }
