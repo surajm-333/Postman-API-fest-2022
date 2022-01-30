@@ -5,7 +5,7 @@ const config ={
     },
     default:{
         SECRET:'AGrI4FTpyaamLKBAnS3ov8SnnNd2ABCr',
-        DATABASE:'mongodb+srv://imageshop_admin:imageshop_admin@imageshopdb.5ngx7.mongodb.net/books?retryWrites=true&w=majority'
+        DATABASE:'mongo_url_goes_here'
 
     }
 }
