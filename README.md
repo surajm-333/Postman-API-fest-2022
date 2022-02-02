@@ -7,6 +7,9 @@ The APIs are deployed [here](https://library-books-api.herokuapp.com/ "F.A.B. Li
 
 Presentation of F.A.B Library: [here](https://drive.google.com/file/d/1LGn8qGB9_W4khaAYSt5SF5UV73eARm9v/view?usp=sharing/ "Presentation")
 
+# Achievements --
+<img src="https://github.com/surajm-333/Postman-API-fest-2022/blob/main/backend/postman-apifest-top10.png"/>
+
 # API EndPoints --
 1. /api/books -- Fetch All Books from the Database [GET] <br />
 2. /api/bookbysearch -- Fetch all the books with keyword for Book Name,Author or Genre of Book [GET] <br />
@@ -24,10 +27,3 @@ Signup:
 <img src="https://github.com/surajm-333/Postman-API-fest-2022/blob/main/backend/postman-demo-1.png"/>
 Login:
 <img src="https://github.com/surajm-333/Postman-API-fest-2022/blob/main/backend/postman-demo-2.png"/>
-
-# Our Team --
-1. Suraj Mulchandani (Team Lead) <br />
-2. Manish Kumar <br />
-3. Rajarshi Tiwari <br />
-4. Nikhil Modi <br />
-5. Praveen Kumar <br />
